@@ -3,17 +3,38 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { UserserviceService } from './userservice.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    AboutComponent,
+    LoginComponent,
+    FooterComponent,
+    ErrorpageComponent,
+    HomepageComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    [UserserviceService]
   ],
   bootstrap: [AppComponent]
 })
