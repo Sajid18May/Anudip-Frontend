@@ -6,13 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  isActive: boolean = false;
-
-  activateContainer() {
-    this.isActive = true;
-  }
-
-  deactivateContainer() {
-    this.isActive = false;
-  }
 }
