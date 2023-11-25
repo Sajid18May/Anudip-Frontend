@@ -6,9 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  public isLoginSelected = true;
+  isActive: boolean = false;
 
-  toggleView() {
-    this.isLoginSelected = !this.isLoginSelected;
+  activateContainer() {
+    this.isActive = true;
+  }
+
+  deactivateContainer() {
+    this.isActive = false;
   }
 }

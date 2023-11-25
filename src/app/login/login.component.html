@@ -1,87 +1,50 @@
-<div class="form-box">
-
-  <!------------------- login form -------------------------->
-  <form>
-
-  <div class="login-container" id="login" [ngClass]="{'left-4px': isLoginSelected, 'opacity-1': isLoginSelected}">
-      <div class="top">
-          <span>Don't have an account? <a href="#" [ngClass]="{'white-btn': !isLoginSelected}" (click)="toggleView()">Sign Up</a></span>
-          <header>Login</header>
-      </div>
-      <div class="input-box">
-          <input type="text" class="input-field" placeholder="Username or Email">
-          <i class="bx bx-user"></i>
-      </div>
-      <div class="input-box">
-          <input type="password" class="input-field" placeholder="Password">
-          <i class="bx bx-lock-alt"></i>
-      </div>
-      <div class="input-box">
-          <input type="submit" class="submit" value="Sign In">
-      </div>
-      <div class="two-col">
-          <div class="one">
-              <input type="checkbox" id="login-check">
-              <label for="login-check"> Remember Me</label>
+<div class="container" id="container" [class.active]="isActive">
+  <div class="row justify-content-center align-items-center">
+  <div class="form-container sign-up">
+      <form>
+          <h1>Create Account</h1>
+          <div class="social-icons">
+              <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
-          <div class="two">
-              <label><a href="#">Forgot password?</a></label>
+          <span>or use your email for registeration</span>
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <input type="password" placeholder="Password">
+          <button>Sign Up</button>
+      </form>
+  </div>
+  <div class="form-container sign-in">
+      <form>
+          <h1>Sign In</h1>
+          <div class="social-icons">
+              <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email password</span>
+          <input type="email" placeholder="Email">
+          <input type="password" placeholder="Password">
+          <a href="#">Forget Your Password?</a>
+          <button>Sign In</button>
+      </form>
+  </div>
+  <div class="toggle-container">
+      <div class="toggle">
+          <div class="toggle-panel toggle-left">
+              <h1>Welcome Back!</h1>
+              <p>Enter your personal details to use all of site features</p>
+              <button class="hidden" id="login" (click)="deactivateContainer()" >Sign In</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+              <h1>Hello, Friend!</h1>
+              <p>Register with your personal details to use all of site features</p>
+              <button class="hidden" id="register" (click)="activateContainer()">Sign Up</button>
           </div>
       </div>
   </div>
-  </form>
-  <!------------------- registration form -------------------------->
-  <form>
-  <div class="register-container" id="register" [ngClass]="{'right-520px': !isLoginSelected, 'opacity-0': !isLoginSelected}">
-      <div class="top">
-          <span>Have an account? <a href="#" [ngClass]="{'white-btn': isLoginSelected}" (click)="toggleView()">Login</a></span>
-          <header>Sign Up</header>
-      </div>
-      <div class="two-forms">
-          <div class="input-box">
-              <input type="text" class="input-field" placeholder="Firstname">
-              <i class="bx bx-user"></i>
-          </div>
-          <div class="input-box">
-              <input type="text" class="input-field" placeholder="Lastname">
-              <i class="bx bx-user"></i>
-          </div>
-      </div>
-      <div class="two-forms">
-      <div class="input-box">
-          <input type="text" class="input-field" placeholder="Email">
-          <i class="bx bx-envelope"></i>
-      </div>
-      <div class="input-box">
-          <input type="password" class="input-field" placeholder="Password">
-          <i class="bx bx-lock-alt"></i>
-      </div>
-      </div>
-
-      <div class="two-forms">
-          <div class="input-box">
-              <input type="text" class="input-field" placeholder="Address">
-              <i class="bx bx-globe"></i>
-          </div>
-          <div class="input-box">
-              <input type="text" class="input-field" placeholder="Phone">
-              <i class="bx bx-mobile-alt"></i>
-          </div>
-          </div>
-
-      <div class="input-box">
-          <input type="submit" class="submit" value="Register">
-      </div>
-      <div class="two-col">
-          <div class="one">
-              <input type="checkbox" id="register-check">
-              <label for="register-check"> Remember Me</label>
-          </div>
-          <div class="two">
-              <label><a href="#">Terms & conditions</a></label>
-          </div>
-      </div>
   </div>
-</form>
 </div>
-
