@@ -6,6 +6,8 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { SignupComponent } from './signup/signup.component';
+import { BooksComponent } from './books/books.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'register',component: RegistrationComponent,},
@@ -13,6 +15,8 @@ const routes: Routes = [
   // {path:"",component:HomepageComponent},
   // {path:"",component:HomepageComponent},
   {path:'signup',component:SignupComponent},
+  {path:'books',component:BooksComponent},
+  {path:'cart',component:CartComponent},
   { path: '',   redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },

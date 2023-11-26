@@ -4,6 +4,7 @@
 }
 header{
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
@@ -11,5 +12,13 @@ header{
   text-align: right;
   display: flex;
   justify-content: center;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 60px;
+  line-height: 60px;
+  background-color: rgba(67, 67, 67, 0.6);
+  z-index: 100;
 
 }
