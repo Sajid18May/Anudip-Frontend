@@ -13,6 +13,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserserviceService } from './userservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     ErrorpageComponent,
     HomepageComponent,
     RegistrationComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
