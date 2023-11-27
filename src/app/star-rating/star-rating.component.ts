@@ -12,7 +12,7 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [`
     .star-rating {
-      font-size: 24px;
+      font-size: 20px;
       cursor: pointer;
     }
   `]
