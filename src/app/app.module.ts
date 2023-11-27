@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
 import { BooksComponent } from './books/books.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BooksComponent } from './books/books.component';
     SignupComponent,
     CartComponent,
     BooksComponent,
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,
