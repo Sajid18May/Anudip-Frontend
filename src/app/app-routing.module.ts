@@ -13,7 +13,6 @@ import { OrdersComponent } from './orders/orders.component';
 const routes: Routes = [
   { path: 'register',component: RegistrationComponent,},
   { path: 'homepage', component: HomepageComponent },
-  // {path:"",component:HomepageComponent},
   {path:"orders",component:OrdersComponent},
   {path:'signup',component:SignupComponent},
   {path:'books',component:BooksComponent},
