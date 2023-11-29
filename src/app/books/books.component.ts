@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/book';
 import { BooksService } from '../services/books.service';
 import { CartService } from '../services/cart.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -12,11 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BooksComponent implements OnInit {
 
   Books: Book[]=[];
-  constructor(private bookService: BooksService,private cartService:CartService,private activetedRoute:ActivatedRoute) {
-    // this.activetedRoute.params.subscribe((param)=>{
-    //   if(param['searchTerm'])
-    //   this.Books=this.getBooksBySearchTerm(param['searchTerm']);
-    // })
+  constructor(private bookService: BooksService,private cartService:CartService) {
 
    }
 
@@ -24,10 +19,15 @@ export class BooksComponent implements OnInit {
     this.bookService.getBooks().subscribe((data: Book[]) => {
       this.Books = data;
     });
+    if(this.keyWord.length===0)
+      this.bookService.getBooks().subscribe((data: Book[]) => {
+      this.Books = data;
+    });
   }
-  getBooksBySearchTerm(searchTerm:string){
+  keyWord:string='';
+  getBooksBySearchTerm(){
     return this.bookService.getBooks().subscribe((data: Book[]) => {
-      this.Books = data.filter(book=>book.title.toLowerCase().includes(searchTerm.toLowerCase()));
+      this.Books = data.filter(book=>book.title.toLowerCase().includes(this.keyWord.toLowerCase()));
     })
   }
 
