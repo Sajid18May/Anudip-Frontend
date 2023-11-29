@@ -11,7 +11,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { UserserviceService } from './userservice.service';
+import { UserserviceService } from './services/userservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
