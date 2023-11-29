@@ -20,3 +20,10 @@ header{
   z-index: 100;
 
 }
+.px-2 {
+  padding-right: -1.5rem !important;
+  padding-left: 6.5rem !important;
+  }
+  .me-2 {
+  margin-right: 4.5rem !important;
+  }
