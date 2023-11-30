@@ -36,10 +36,18 @@
                       </div>
                       <div class="d-flex flex-row align-items-center">
                         <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">{{cartItem.quantity}}</h5>
+                          <select #quantitySelect
+                          [value]="cartItem.quantity"
+                          (change)="changeQuantity(cartItem,quantitySelect.value)" class="fw-normal mb-0">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">{{cartItem.price}}</h5>
+                          <h5 class="mb-0">{{cartItem.price | currency:'INR'}}</h5>
                         </div>
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                       </div>
@@ -53,7 +61,7 @@
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">{{cart.totalprice}}</p>
+                      <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
@@ -63,13 +71,13 @@
 
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">{{cart.totalprice}}</p>
+                      <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
                     </div>
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
-                        <span>{{cart.totalprice}}</span>
-                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                        <span>{{cart.totalprice | currency:'INR'}}</span>
+                        <span>&nbsp;&nbsp;Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                       </div>
                     </button>
 

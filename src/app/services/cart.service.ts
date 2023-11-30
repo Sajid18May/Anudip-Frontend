@@ -17,10 +17,12 @@ export class CartService {
     if(cartItem)
       return;
     this.cart.items.push(new Cartitem(book));
+    this.setTotalValues();
   }
 
   removeFromCart(bookTitle:string):void{
     this.cart.items=this.cart.items.filter(item=>item.book.title!=bookTitle);
+    this.setTotalValues();
   }
 
   changeQuantity(bookTitle:string,quantity:number){
@@ -29,13 +31,20 @@ export class CartService {
       return;
     cartitem.quantity=quantity;
     cartitem.price=quantity*cartitem.book.price;
+    this.setTotalValues();
   }
 
   clearCart(){
     this.cart=new Cart();
+    this.setTotalValues();
   }
 
   getCartObservable():Observable<Cart>{
     return this.cartSubject.asObservable();
+  }
+
+  private setTotalValues():void{
+    this.cart.totalprice=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.price,0);
+    this.cart.totalcount=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.quantity,0);
   }
 }
