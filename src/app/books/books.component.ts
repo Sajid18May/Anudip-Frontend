@@ -30,7 +30,7 @@ export class BooksComponent implements OnInit {
       this.Books = data.filter(book=>book.title.toLowerCase().includes(this.keyWord.toLowerCase()));
     })
   }
-
-  addtoCart(){
+  addtoCart(book:Book){
+    this.cartService.addToCart(book);
   }
 }
