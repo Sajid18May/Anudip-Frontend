@@ -18,6 +18,8 @@ import { CartComponent } from './cart/cart.component';
 import { BooksComponent } from './books/books.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CartService } from './services/cart.service';
+import { BooksService } from './services/books.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { OrdersComponent } from './orders/orders.component';
   ],
   providers: [
     provideClientHydration(),
-    [UserserviceService]
+    [UserserviceService,
+    CartService,BooksService]
   ],
   bootstrap: [AppComponent]
 })

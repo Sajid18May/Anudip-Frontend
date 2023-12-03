@@ -27,3 +27,6 @@ header{
   .me-2 {
   margin-right: 4.5rem !important;
   }
+p{
+  padding-left: 10px;
+}

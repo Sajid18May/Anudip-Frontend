@@ -74,7 +74,7 @@
                       <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
                     </div>
 
-                    <button type="button" class="btn btn-info btn-block btn-lg">
+                    <button type="button" (click)="orderfinal()" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
                         <span>{{cart.totalprice | currency:'INR'}}</span>
                         <span>&nbsp;&nbsp;Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>

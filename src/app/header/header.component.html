@@ -13,12 +13,13 @@
       </ul>
 
 
+      <p *ngIf="username!=''" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none" >Hello{{username}}</p>
       <div class="dropdown text-end">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../../assets/images/person-circle (2).svg" height="32" weight="32">
         </a>
         <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <li><a class="dropdown-item" (click)="signOut()">Sign out</a></li>
         </ul>
       </div>
     </div>

@@ -3,6 +3,8 @@ import { Cart } from './../models/cart';
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { Cartitem } from '../models/cartitem';
+import { HttpClient } from '@angular/common/http';
+import { Orders } from '../models/orders';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { Cartitem } from '../models/cartitem';
 export class CartService {
   private cart:Cart=new Cart();
   private cartSubject:BehaviorSubject<Cart>=new BehaviorSubject(this.cart);
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   addToCart(book:Book):void{
     let cartItem=this.cart.items.find(item=>item.book.title===book.title);
@@ -46,5 +48,12 @@ export class CartService {
   private setTotalValues():void{
     this.cart.totalprice=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.price,0);
     this.cart.totalcount=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.quantity,0);
+  }
+
+  public submitOrder(){
+    return this.http.post("http://localhost:8080/addOrder",this.cart);
+  }
+  public getOrder():Observable<Orders>{
+    return this.http.get<Orders>("http://localhost:8080/getOrders");
   }
 }

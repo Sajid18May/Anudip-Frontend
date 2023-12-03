@@ -25,4 +25,9 @@ export class CartComponent implements OnInit{
     const quantity=parseInt(quantityInString);
     this.cartService.changeQuantity(cartItem.book.title,quantity);
   }
+
+  orderfinal(){
+    this.cartService.submitOrder();
+    this.cart=new Cart();
+  }
 }

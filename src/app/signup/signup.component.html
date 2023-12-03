@@ -8,30 +8,34 @@
   <div class="form-box pb-5">
       <div class="form-value">
 
-          <form (ngSubmit)="registerNow()">
+          <form (ngSubmit)="registerNow()" [formGroup]="form" novalidate>
               <h2>Sign Up !</h2>
               <div class="inputbox">
-                <input type="text" required  name="first_name" [(ngModel)]="user.first_name">
+                <input type="text" required  name="first_name" formControlName="first_name" >
                 <label for="">First Name</label>
               </div>
+              <div class="alert alert-denger" *ngIf="first_name?.touched && first_name?.invalid">
+                <label *ngIf="first_name?.errors?.['required']">The full name is required</label>
+                <label *ngIf="first_name?.errors?.minLength">Give 5 words name</label>
+              </div>
               <div class="inputbox">
-                <input type="text" required  name="last_name" [(ngModel)]="user.last_name">
+                <input type="text" required  name="last_name" formControlName="last_name">
                 <label for="">Last Name</label>
               </div>
               <div class="inputbox">
-                  <input type="email" required  name="email" [(ngModel)]="user.email">
+                  <input type="email" required  name="email" formControlName="email">
                   <label for="">Email</label>
               </div>
               <div class="inputbox">
-                  <input type="password" required  name="password" [(ngModel)]="user.password">
+                  <input type="password" required  name="password" formControlName="password">
                   <label for="">Password</label>
               </div>
               <div class="inputbox">
-                <input type="tel" required name="phone_number" [(ngModel)]="user.phone_number">
+                <input type="tel" required name="phone_number" formControlName="phone_number">
                 <label for="">Phone Number</label>
               </div>
               <div class="inputbox">
-                <input type="text" required  name="address" [(ngModel)]="user.address">
+                <input type="text" required  name="address" formControlName="address">
                 <label for="">Address</label>
               </div>
               <button style="color: black;">Sign Up</button>
