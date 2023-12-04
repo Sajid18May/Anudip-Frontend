@@ -10,7 +10,7 @@ import { Orders } from '../models/orders';
   providedIn: 'root'
 })
 export class CartService {
-  private cart:Cart=new Cart();
+  private cart:Cart=this.getValuesfromStorage();
   private cartSubject:BehaviorSubject<Cart>=new BehaviorSubject(this.cart);
   constructor(private http:HttpClient) { }
 
@@ -48,6 +48,14 @@ export class CartService {
   private setTotalValues():void{
     this.cart.totalprice=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.price,0);
     this.cart.totalcount=this.cart.items.reduce((PrevSum,CurrentItem)=>PrevSum+CurrentItem.quantity,0);
+    const cartJSON=JSON.stringify(this.cart);
+    localStorage.setItem('Cart',cartJSON);
+    this.cartSubject.next(this.cart);
+  }
+
+  private getValuesfromStorage():Cart{
+    const cartJSON=localStorage.getItem('Cart');
+    return cartJSON? JSON.parse(cartJSON): new Cart();
   }
 
   public submitOrder(){
