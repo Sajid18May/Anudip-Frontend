@@ -28,6 +28,6 @@ export class CartComponent implements OnInit{
 
   orderfinal(){
     this.cartService.submitOrder();
-    this.cart=new Cart();
+    this.cartService.clearCart();
   }
 }

@@ -1,1 +1,21 @@
-<p>orders works!</p>
+<div class="container d-flex justify-content-center align-items-center py-5">
+
+<table class="table table-bordered table-dark container">
+  <thead>
+    <tr>
+      <th scope="col">UserName</th>
+      <th scope="col">Number of Books</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Total(Incl. taxes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <!-- <th scope="row">{{order.customers.first_name}}</th> -->
+      <td>{{order.totalcount}}</td>
+      <td>{{order.totalprice|currency:'INR'}}</td>
+      <td>{{order.totalprice | currency:'INR'}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

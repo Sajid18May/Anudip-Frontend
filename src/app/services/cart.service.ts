@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, throwError } from 'rxjs';
 import { Cart } from './../models/cart';
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
@@ -53,15 +53,36 @@ export class CartService {
     this.cartSubject.next(this.cart);
   }
 
-  private getValuesfromStorage():Cart{
-    const cartJSON=localStorage.getItem('Cart');
-    return cartJSON? JSON.parse(cartJSON): new Cart();
+  // private getValuesfromStorage():Cart{
+  //   const cartJSON=localStorage.getItem('Cart');
+  //   return cartJSON? JSON.parse(cartJSON): new Cart();
+  // }
+  private getValuesfromStorage(): Cart {
+    if (typeof localStorage !== 'undefined') {
+      const cartJSON = localStorage.getItem('Cart');
+      return cartJSON ? JSON.parse(cartJSON) : new Cart();
+    } else {
+      // Handle the case where localStorage is not available
+      console.error('localStorage is not available');
+      return new Cart();
+    }
   }
 
-  public submitOrder(){
+  submitOrder(){
     return this.http.post("http://localhost:8080/addOrder",this.cart);
   }
-  public getOrder():Observable<Orders>{
-    return this.http.get<Orders>("http://localhost:8080/getOrders");
-  }
+  // getOrder():Observable<Orders[]>{
+  //   return this.http.get<Orders[]>("http://localhost:8080/getOrders");
+  // }
+
+getOrder(): Observable<Orders[]> {
+  return this.http.get<Orders[]>("http://localhost:8080/getOrders")
+    .pipe(
+      catchError((error: any) => {
+        console.error('Error fetching orders:', error);
+        return throwError(error);
+      })
+    );
+}
+
 }

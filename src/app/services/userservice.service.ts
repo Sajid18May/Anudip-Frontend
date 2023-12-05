@@ -1,36 +1,107 @@
 
+// import { HttpClient } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+// import { User } from '../models/user';
+// import { Observable, BehaviorSubject } from 'rxjs';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class UserserviceService {
+//   private user:User=new User();
+//   private userSubject:BehaviorSubject<User>=new BehaviorSubject(this.user);
+
+//   constructor(private http:HttpClient) { }
+
+//   public doRegistration(user:User){
+//     return this.http.post("http://localhost:8080/addCustomers",user);
+//   }
+//   public login(user:User):Observable<User>{
+//     return this.http.post<User>("http://localhost:8080/log_in",user);
+//   }
+//   addUserDetails(user:User){
+//     this.user=user;
+//     this.setValuesfromStorage();
+//   }
+//   removeUserDetails(){
+//     this.user=new User();
+//     this.setValuesfromStorage();
+//   }
+//   getUserDetails():User{
+//     return this.getValuesfromStorage();
+//   }
+//   getUserObservable():Observable<User>{
+//       return this.userSubject.asObservable();
+//   }
+//   private setValuesfromStorage():void{
+//     const userJSON=JSON.stringify(this.user);
+//     sessionStorage.setItem('user',userJSON);
+//     this.userSubject.next(this.user);
+//   }
+
+//   private getValuesfromStorage():User{
+//     const userJSON=sessionStorage.getItem('user');
+//     return userJSON? JSON.parse(userJSON): new User();
+//   }
+// }
+
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserserviceService {
-  private username:string='';
-  private user:User=new User();
-  private userSubject:BehaviorSubject<User>=new BehaviorSubject(this.user);
+  private user: User = new User();
+  private userSubject: BehaviorSubject<User> = new BehaviorSubject(this.user);
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  public doRegistration(user:User){
-    return this.http.post("http://localhost:8080/addCustomers",user);
+  public doRegistration(user: User): Observable<any> {
+    return this.http.post("http://localhost:8080/addCustomers", user);
   }
-  public login(user:User):Observable<User>{
-    return this.http.post<User>("http://localhost:8080/log_in",user);
+
+  public login(user: User): Observable<User> {
+    return this.http.post<User>("http://localhost:8080/log_in", user);
   }
-  addUserDetails(user:User){
-    this.user=user;
+
+  addUserDetails(user: User): void {
+    this.user = user;
+    this.setValuesfromStorage();
   }
-  removeUserDetails(){
-    this.user=new User();
+
+  removeUserDetails(): void {
+    this.user = new User();
+    this.setValuesfromStorage();
   }
-  getUserDetails(){
-    this.username=this.user.first_name;
-    return this.username;
+
+  getUserDetails(): User {
+    return this.getValuesfromStorage();
   }
-  getUserObservable():Observable<User>{
-      return this.userSubject.asObservable();
+
+  getUserObservable(): Observable<User> {
+    return this.userSubject.asObservable();
+  }
+
+  private setValuesfromStorage(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const userJSON = JSON.stringify(this.user);
+      sessionStorage.setItem('user', userJSON);
+      this.userSubject.next(this.user);
+    }
+  }
+
+  private getValuesfromStorage(): User {
+    if (isPlatformBrowser(this.platformId)) {
+      const userJSON = sessionStorage.getItem('user');
+      return userJSON ? JSON.parse(userJSON) : new User();
+    }
+    return new User(); // or handle server-side logic accordingly
   }
 }
