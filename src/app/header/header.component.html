@@ -19,7 +19,8 @@
           <img src="../../assets/images/person-circle (2).svg" height="32" weight="32">
         </a>
         <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" (click)="signOut()">Sign out</a></li>
+          <li><a *ngIf="user.first_name!=''" class="dropdown-item" (click)="signOut()">Sign out</a></li>
+          <li><a *ngIf="user.first_name==''" class="dropdown-item" routerLink="/login">Login</a></li>
         </ul>
       </div>
     </div>
