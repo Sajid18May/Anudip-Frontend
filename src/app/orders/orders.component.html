@@ -11,10 +11,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let order of orders">
-      <!-- <th scope="row">{{order.customers.first_name}}</th> -->
-      <td>{{order.totalcount}}</td>
-      <td>{{order.totalprice|currency:'INR'}}</td>
-      <td>{{order.totalprice | currency:'INR'}}</td>
+      <th *ngIf="user.customer_id==order.customers.customer_id" scope="row">{{order.customers.first_name}}</th>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalcount}}</td>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalprice|currency:'INR'}}</td>
+      <td *ngIf="user.customer_id==order.customers.customer_id">{{order.totalprice | currency:'INR'}}</td>
     </tr>
   </tbody>
 </table>

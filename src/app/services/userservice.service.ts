@@ -1,50 +1,3 @@
-
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { User } from '../models/user';
-// import { Observable, BehaviorSubject } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class UserserviceService {
-//   private user:User=new User();
-//   private userSubject:BehaviorSubject<User>=new BehaviorSubject(this.user);
-
-//   constructor(private http:HttpClient) { }
-
-//   public doRegistration(user:User){
-//     return this.http.post("http://localhost:8080/addCustomers",user);
-//   }
-//   public login(user:User):Observable<User>{
-//     return this.http.post<User>("http://localhost:8080/log_in",user);
-//   }
-//   addUserDetails(user:User){
-//     this.user=user;
-//     this.setValuesfromStorage();
-//   }
-//   removeUserDetails(){
-//     this.user=new User();
-//     this.setValuesfromStorage();
-//   }
-//   getUserDetails():User{
-//     return this.getValuesfromStorage();
-//   }
-//   getUserObservable():Observable<User>{
-//       return this.userSubject.asObservable();
-//   }
-//   private setValuesfromStorage():void{
-//     const userJSON=JSON.stringify(this.user);
-//     sessionStorage.setItem('user',userJSON);
-//     this.userSubject.next(this.user);
-//   }
-
-//   private getValuesfromStorage():User{
-//     const userJSON=sessionStorage.getItem('user');
-//     return userJSON? JSON.parse(userJSON): new User();
-//   }
-// }
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -55,7 +8,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserserviceService {
-  private user: User = new User();
+  private user: User = this.getValuesfromStorage();
   private userSubject: BehaviorSubject<User> = new BehaviorSubject(this.user);
 
   constructor(
@@ -102,6 +55,6 @@ export class UserserviceService {
       const userJSON = sessionStorage.getItem('user');
       return userJSON ? JSON.parse(userJSON) : new User();
     }
-    return new User(); // or handle server-side logic accordingly
+    return new User();
   }
 }

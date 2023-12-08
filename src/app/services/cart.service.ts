@@ -53,10 +53,6 @@ export class CartService {
     this.cartSubject.next(this.cart);
   }
 
-  // private getValuesfromStorage():Cart{
-  //   const cartJSON=localStorage.getItem('Cart');
-  //   return cartJSON? JSON.parse(cartJSON): new Cart();
-  // }
   private getValuesfromStorage(): Cart {
     if (typeof localStorage !== 'undefined') {
       const cartJSON = localStorage.getItem('Cart');
@@ -68,8 +64,13 @@ export class CartService {
     }
   }
 
-  submitOrder(){
-    return this.http.post("http://localhost:8080/addOrder",this.cart);
+  submitOrder(cart: Cart) {
+    return this.http.post("http://localhost:8080/addOrder", cart);
+  }
+
+  submitOrderWithCustomerId(cart: Cart, Id: number) {
+    const url = `http://localhost:8080/addOrder/${Id}`;
+    return this.http.post(url, cart);
   }
   // getOrder():Observable<Orders[]>{
   //   return this.http.get<Orders[]>("http://localhost:8080/getOrders");

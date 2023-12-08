@@ -1,25 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
-// import { Orders } from '../models/orders';
-// import { CartService } from '../services/cart.service';
-
-// @Component({
-//   selector: 'app-orders',
-//   templateUrl: './orders.component.html',
-//   styleUrl: './orders.component.css'
-// })
-// export class OrdersComponent implements OnInit{
-//   orders:Orders[]=[];
-//   constructor(private cartservice:CartService){}
-//   ngOnInit(): void {
-//     this.cartservice.getOrder().subscribe((data:Orders[])=>
-//     this.orders=data);
-//   }
-// }
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Orders } from '../models/orders';
 import { CartService } from '../services/cart.service';
 import { Subscription } from 'rxjs';
+import { User } from '../models/user';
+import { UserserviceService } from '../services/userservice.service';
 
 @Component({
   selector: 'app-orders',
@@ -28,9 +12,14 @@ import { Subscription } from 'rxjs';
 })
 export class OrdersComponent implements OnInit, OnDestroy {
   orders: Orders[] = [];
+  user: User = new User();
   private subscription!: Subscription;
-
-  constructor(private cartService: CartService) {}
+  private userSubscription!: Subscription;
+  constructor(private cartService: CartService,private loginservice: UserserviceService) {
+    this.userSubscription = this.loginservice.getUserObservable().subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnInit(): void {
     this.subscription = this.cartService.getOrder().subscribe(
@@ -38,7 +27,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
         this.orders = data;
       },
       (error) => {
-        // Handle error, if needed
+        console.log("something went wrong");
       }
     );
   }
