@@ -11,3 +11,6 @@ body {
   background-color:#141019;
   background: radial-gradient(at 50% -20%, #908392, #0d060e) fixed;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

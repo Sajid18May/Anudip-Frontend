@@ -21,6 +21,7 @@
         <ul class="dropdown-menu text-small">
           <li><a *ngIf="user.first_name!=''" class="dropdown-item" (click)="signOut()">Sign out</a></li>
           <li><a *ngIf="user.first_name==''" class="dropdown-item" routerLink="/login">Login</a></li>
+          <li><a *ngIf="user.first_name=='admin'" class="dropdown-item" routerLink="/admin">Admin Dashboard</a></li>
         </ul>
       </div>
     </div>

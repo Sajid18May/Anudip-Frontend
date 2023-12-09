@@ -20,6 +20,13 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartService } from './services/cart.service';
 import { BooksService } from './services/books.service';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input'
+import {MatSelectModule} from '@angular/material/select'
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import {MatNativeDateModule} from '@angular/material/core'
+import {MatDialogModule} from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -36,6 +43,7 @@ import { BooksService } from './services/books.service';
     BooksComponent,
     StarRatingComponent,
     OrdersComponent,
+    AdminpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +51,12 @@ import { BooksService } from './services/books.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(),

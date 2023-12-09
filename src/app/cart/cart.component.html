@@ -79,7 +79,11 @@
                       <p class="mb-2">{{cart.totalprice | currency:'INR'}}</p>
                     </div>
 
-                    <button type="button" (click)="orderfinal()" class="btn btn-info btn-block btn-lg">
+                    <div *ngIf="this.user.first_name==''" class="alert alert-danger col-7" role="alert">
+                      Sign in to place your order. <a routerLink="/login" class="alert-link">Sign in</a>
+                    </div>
+
+                    <button type="button" [disabled]="this.user.first_name==''" (click)="orderfinal()" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
                         <span>{{cart.totalprice | currency:'INR'}}</span>
                         <span>&nbsp;&nbsp;Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>

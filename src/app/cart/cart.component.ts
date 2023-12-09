@@ -39,9 +39,7 @@ export class CartComponent implements OnInit, OnDestroy{
 
 
   orderfinal() {
-    // if(this.user==null){
-    //   alert
-    // }
+
 
     this.cartService.submitOrderWithCustomerId(this.cart,this.user.customer_id).subscribe(
       (response) => {

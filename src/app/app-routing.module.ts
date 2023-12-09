@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { BooksComponent } from './books/books.component';
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 const routes: Routes = [
   { path: 'register',component: RegistrationComponent,},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'cart',component:CartComponent},
   { path: '',   redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
+  { path: 'admin', component: AdminpageComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: ErrorpageComponent },
 ];
