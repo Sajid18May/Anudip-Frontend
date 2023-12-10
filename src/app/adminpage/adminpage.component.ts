@@ -72,12 +72,16 @@ export class AdminpageComponent implements OnInit {
 
   }
   updateBook(id:number){
-    this.bookService.updateBook(this.bookupdate.value,id).subscribe((data)=>{this.messageupdate=data;
-      this.ngOnInit();});
+    this.bookService.updateBook(this.bookupdate.value,id).subscribe(
+      (data)=>{this.messageupdate=data;
+        this.ngOnInit();});
   }
   deleteBook(id:number){
     if(window.confirm('Are sure you want to delete this Book ?')){
-    this.bookService.deleteBook(id).subscribe((data)=>{this.messagedelete=data;
-      this.ngOnInit();});}
+    this.bookService.deleteBook(id).subscribe(
+      (data)=>{this.messagedelete=data;
+        console.log(data);
+        this.ngOnInit();});
+    }
   }
 }
