@@ -14,9 +14,9 @@
                 <input type="text" required  name="first_name" formControlName="first_name" >
                 <label for="">First Name</label>
               </div>
-              <div class="alert alert-denger" *ngIf="first_name?.touched && first_name?.invalid">
-                <label *ngIf="first_name?.errors?.['required']">The full name is required</label>
-                <label *ngIf="first_name?.errors?.minLength">Give 5 words name</label>
+              <div *ngIf="f['first_name'].touched && f['first_name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['first_name'].errors && f['first_name'].errors['required']">Name is required.</div>
+                <div *ngIf="f['first_name'].errors && f['first_name'].errors['minlength']">Name should be 3 character.</div>
               </div>
               <div class="inputbox">
                 <input type="text" required  name="last_name" formControlName="last_name">
