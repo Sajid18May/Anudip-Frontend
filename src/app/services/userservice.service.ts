@@ -16,7 +16,7 @@ export class UserserviceService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  public doRegistration(user: User): Observable<any> {
+  public doRegistration(user: any): Observable<any> {
     return this.http.post("http://localhost:8080/addCustomers", user);
   }
 
