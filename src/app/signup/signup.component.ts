@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit{
   message:any;
+  emailerror!:string;
   user:User=new User();
   form=new FormGroup({
     first_name:new FormControl(this.user.first_name,[
@@ -35,7 +36,7 @@ public registerNow(){
     if(data!=null)
     this.router.navigate(['/login']);
     else
-    alert("This Email is already connected to an Account")
+    this.emailerror="This Email is already Registered";
   });
 }
 }

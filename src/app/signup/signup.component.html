@@ -1,7 +1,5 @@
 <div class="px-4 py-5 my-5 text-center">
-<h2 class="justify-content-center text-center px-3" style="border: 2px solid rgba(255,255,255,0.5); display: inline-block; border-radius: 20px;" *ngIf="message!=null">
-  User Registration success {{user.first_name+' '+user.last_name}}
-</h2>
+
 </div>
 
 <section class="pb-5 mb-3">
@@ -29,6 +27,9 @@
               <div class="inputbox">
                   <input type="email" required  name="email" formControlName="email">
                   <label for="">Email</label>
+              </div>
+              <div *ngIf="emailerror!=null" class="alert alert-danger">
+                <div>{{emailerror}}</div>
               </div>
               <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
                 <div *ngIf="f['email'].errors && f['email'].errors['required']">Email can't be empty</div>
