@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { UserserviceService } from '../services/userservice.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,7 @@ export class SignupComponent implements OnInit{
     phone_number:new FormControl(this.user.phone_number,[Validators.required,Validators.pattern('[0-9]{10}')]),
     address:new FormControl(this.user.address,[Validators.required])
   });
- constructor(private service:UserserviceService) { }
+ constructor(private service:UserserviceService,private router: Router) { }
  ngOnInit():void { }
  get f(){
   return this.form.controls;
@@ -30,6 +31,11 @@ export class SignupComponent implements OnInit{
 
 public registerNow(){
   let resp=this.service.doRegistration(this.form.value);
-  resp.subscribe((data)=>this.message=data);
+  resp.subscribe((data)=>{this.message=data;
+    if(data!=null)
+    this.router.navigate(['/login']);
+    else
+    alert("This Email is already connected to an Account")
+  });
 }
 }

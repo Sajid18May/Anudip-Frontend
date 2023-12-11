@@ -17,7 +17,7 @@ export class UserserviceService {
   ) {}
 
   public doRegistration(user: any): Observable<any> {
-    return this.http.post("http://localhost:8080/addCustomers", user);
+    return this.http.post("http://localhost:8080/register", user);
   }
 
   public login(user: User): Observable<User> {
