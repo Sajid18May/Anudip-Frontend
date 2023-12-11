@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { UserserviceService } from './services/userservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
@@ -32,7 +31,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     ErrorpageComponent,
     HomepageComponent,
-    RegistrationComponent,
     SignupComponent,
     CartComponent,
     BooksComponent,

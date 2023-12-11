@@ -8,7 +8,7 @@
 }
 
 .blinking {
-  animation: blinkColorChange 1s infinite; /* Adjust the animation duration as needed */
+  animation: blinkColorChange 2s infinite; /* Adjust the animation duration as needed */
 }
 @keyframes colorChangeAnimation {
   0% { color: #fff; background-color: #000; }
@@ -17,7 +17,7 @@
 }
 
 .color-changing {
-  animation: colorChangeAnimation 1s infinite; /* Adjust the animation duration as needed */
+  animation: colorChangeAnimation 2s infinite; /* Adjust the animation duration as needed */
    padding-left: 70px;
    padding-right: 70px;
    font-size:large;

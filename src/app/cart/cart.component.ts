@@ -40,10 +40,11 @@ export class CartComponent implements OnInit, OnDestroy{
 
   orderfinal() {
 
-
+    this.cart.order_date=new Date();
     this.cartService.submitOrderWithCustomerId(this.cart,this.user.customer_id).subscribe(
       (response) => {
         // Handle success if needed
+
         console.log('Order submitted successfully:', response);
         this.cartService.clearCart();
       },
